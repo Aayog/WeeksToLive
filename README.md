@@ -11,8 +11,14 @@ An application that shows your life expectancy by the weeks where you can includ
 ### Target Audience?
 * Mostly youngsters getting started in their adult life, useful for keeping yourself in check.
 * Parents saving memories for their kids.
-* Entrepreneurs storing 
+* Entrepreneurs adding their goals in certain weeks?
 
 
 ### Brainstormed Ideas for the app
 ![Mind map of the app](./assets/mindmap.png)
+
+### Tools/Technologies to use
+* Flutter for app/web 
+* Backend? 
+* Database? 
+
