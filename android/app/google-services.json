@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "712615254117",
+    "project_id": "weekstolive-75fe3",
+    "storage_bucket": "weekstolive-75fe3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712615254117:android:004bbf9253591bbaef0e8c",
+        "android_client_info": {
+          "package_name": "com.example.weekstolive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "712615254117-o8nv8l0pb03ufrk5804hp54p69vqkj87.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeFpx5pd7TetQrO4Jv6eI68-aOj3ZyQgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "712615254117-o8nv8l0pb03ufrk5804hp54p69vqkj87.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
