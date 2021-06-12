@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:weekstolive/screens/home.dart';
 
 class LoginScreen extends StatefulWidget {
+  static String id = 'login_screen';
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -69,12 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     await _auth.signInWithEmailAndPassword(
                         email: _emailText, password: _passwordText);
 
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomeScreen(),
-                      ),
-                    );
+                    Navigator.pushNamed(context, HomeScreen.id);
                   } catch (e) {
                     print(e);
                   }
@@ -88,12 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     await _auth.createUserWithEmailAndPassword(
                         email: _emailText, password: _passwordText);
 
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomeScreen(),
-                      ),
-                    );
+                    Navigator.pushNamed(context, HomeScreen.id);
                   } catch (e) {
                     print(e);
                   }

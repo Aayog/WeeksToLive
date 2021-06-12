@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
 import 'package:weekstolive/authentication/authentication.dart';
+import 'package:weekstolive/screens/home.dart';
+import 'package:weekstolive/screens/login.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +20,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AuthenticationWrapper(),
+      initialRoute: AuthenticationWrapper.id,
+      routes: {
+        AuthenticationWrapper.id: (context) => AuthenticationWrapper(),
+        HomeScreen.id: (context) => HomeScreen(),
+        LoginScreen.id: (context) => LoginScreen(),
+      },
     );
   }
 }

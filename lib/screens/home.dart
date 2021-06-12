@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:weekstolive/screens/login.dart';
 
 class HomeScreen extends StatefulWidget {
+  static String id = 'home_screen';
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
