@@ -68,6 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   try {
                     await _auth.signInWithEmailAndPassword(
                         email: _emailText, password: _passwordText);
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -86,6 +87,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   try {
                     await _auth.createUserWithEmailAndPassword(
                         email: _emailText, password: _passwordText);
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomeScreen(),
+                      ),
+                    );
                   } catch (e) {
                     print(e);
                   }
