@@ -9,8 +9,18 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Text('Welcome Home'),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text("HOME"),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text("Sign out"),
+            ),
+          ],
+        ),
       ),
     );
   }

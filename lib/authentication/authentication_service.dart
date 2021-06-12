@@ -5,12 +5,14 @@ class AuthenticationService {
 
   AuthenticationService(this._firebaseAuth);
 
+  Stream<User?> get authStateChanges => _firebaseAuth.idTokenChanges();
+
   Future<String> signIn(
       {required String email, required String password}) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
-      return 'Signed In';
+      return 'Success';
     } on FirebaseAuthException catch (e) {
       return e.message.toString();
     }
@@ -21,9 +23,13 @@ class AuthenticationService {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
-      return 'Signed Up';
+      return 'Success';
     } on FirebaseAuthException catch (e) {
       return e.message.toString();
     }
+  }
+
+  Future<void> signOut() async {
+    await _firebaseAuth.signOut();
   }
 }
