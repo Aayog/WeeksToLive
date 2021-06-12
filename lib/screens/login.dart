@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:weekstolive/screens/home.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -6,6 +8,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  String _emailText = '';
+  String _passwordText = '';
+
+  final _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +36,10 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: InputDecoration(
                 labelText: 'Email',
               ),
+              controller: _emailController,
+              onChanged: (value) {
+                _emailText = value.trim();
+              },
             ),
           ),
           Padding(
@@ -39,6 +53,10 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: InputDecoration(
                 labelText: 'Password',
               ),
+              controller: _passwordController,
+              onChanged: (value) {
+                _passwordText = value.trim();
+              },
             ),
           ),
           Row(
@@ -46,12 +64,32 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () async {
+                  try {
+                    await _auth.signInWithEmailAndPassword(
+                        email: _emailText, password: _passwordText);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomeScreen(),
+                      ),
+                    );
+                  } catch (e) {
+                    print(e);
+                  }
+                },
                 child: Text('Sign In'),
               ),
               SizedBox(width: 20.0),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () async {
+                  try {
+                    await _auth.createUserWithEmailAndPassword(
+                        email: _emailText, password: _passwordText);
+                  } catch (e) {
+                    print(e);
+                  }
+                },
                 child: Text('Sign Up'),
               ),
             ],
