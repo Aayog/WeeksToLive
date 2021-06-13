@@ -1,9 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'package:weekstolive/screens/home.dart';
-import 'package:weekstolive/services/auth.dart';
 
 class LoginScreen extends StatefulWidget {
   static String id = 'login_screen';
@@ -60,12 +58,11 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   try {
-                    context.read<AuthenticationService>().signIn(
-                          email: _emailController.text.trim(),
-                          password: _passwordController.text.trim(),
-                        );
+                    await _auth.signInWithEmailAndPassword(
+                        email: _emailController.text.trim(),
+                        password: _passwordController.text.trim());
 
                     Navigator.pushNamed(context, HomeScreen.id);
                   } catch (e) {
@@ -78,10 +75,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ElevatedButton(
                 onPressed: () async {
                   try {
-                    context.read<AuthenticationService>().signUp(
-                          email: _emailController.text.trim(),
-                          password: _passwordController.text.trim(),
-                        );
+                    await _auth.createUserWithEmailAndPassword(
+                        email: _emailController.text.trim(),
+                        password: _passwordController.text.trim());
 
                     Navigator.pushNamed(context, HomeScreen.id);
                   } catch (e) {
