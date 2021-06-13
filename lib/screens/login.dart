@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:weekstolive/screens/home.dart';
+import 'package:weekstolive/services/auth.dart';
 
 class LoginScreen extends StatefulWidget {
   static String id = 'login_screen';
@@ -12,9 +15,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  String _emailText = '';
-  String _passwordText = '';
 
   final _auth = FirebaseAuth.instance;
 
@@ -39,9 +39,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 labelText: 'Email',
               ),
               controller: _emailController,
-              onChanged: (value) {
-                _emailText = value.trim();
-              },
             ),
           ),
           Padding(
@@ -56,9 +53,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 labelText: 'Password',
               ),
               controller: _passwordController,
-              onChanged: (value) {
-                _passwordText = value.trim();
-              },
             ),
           ),
           Row(
@@ -66,10 +60,12 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: () async {
+                onPressed: () {
                   try {
-                    await _auth.signInWithEmailAndPassword(
-                        email: _emailText, password: _passwordText);
+                    context.read<AuthenticationService>().signIn(
+                          email: _emailController.text.trim(),
+                          password: _passwordController.text.trim(),
+                        );
 
                     Navigator.pushNamed(context, HomeScreen.id);
                   } catch (e) {
@@ -82,8 +78,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ElevatedButton(
                 onPressed: () async {
                   try {
-                    await _auth.createUserWithEmailAndPassword(
-                        email: _emailText, password: _passwordText);
+                    context.read<AuthenticationService>().signUp(
+                          email: _emailController.text.trim(),
+                          password: _passwordController.text.trim(),
+                        );
 
                     Navigator.pushNamed(context, HomeScreen.id);
                   } catch (e) {

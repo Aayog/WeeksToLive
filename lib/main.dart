@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:weekstolive/screens/authentication.dart';
 
-import 'package:weekstolive/authentication/authentication.dart';
 import 'package:weekstolive/screens/home.dart';
 import 'package:weekstolive/screens/login.dart';
 
