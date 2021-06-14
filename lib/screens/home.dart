@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:weekstolive/screens/login/email_login.dart';
+import 'package:weekstolive/screens/login/login.dart';
 
 class HomeScreen extends StatefulWidget {
   static String id = 'home_screen';
@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ElevatedButton(
               onPressed: () {
                 _auth.signOut();
-                Navigator.pushNamed(context, EmailLoginScreen.id);
+                Navigator.popAndPushNamed(context, LoginScreen.id);
               },
               child: Text("Sign out"),
             ),
