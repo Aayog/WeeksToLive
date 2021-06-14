@@ -1,10 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:weekstolive/screens/authentication.dart';
 import 'package:weekstolive/screens/home.dart';
 import 'package:weekstolive/screens/login/email_login.dart';
 import 'package:weekstolive/screens/login/login.dart';
+import 'package:weekstolive/services/google_sign_in.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

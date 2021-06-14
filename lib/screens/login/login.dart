@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 import 'package:weekstolive/screens/login/email_login.dart';
+import 'package:weekstolive/services/google_sign_in.dart';
 
 class LoginScreen extends StatelessWidget {
   static String id = 'login_screen';
@@ -31,7 +33,14 @@ class LoginScreen extends StatelessWidget {
           ),
           SizedBox(height: 10.0),
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              // final provider = Provider.of<GoogleSignInProvider>(
+              //   context,
+              //   listen: false,
+              // );
+
+              // provider.googleLogin();
+            },
             label: Text('Sign In with Google'),
             icon: FaIcon(FontAwesomeIcons.google),
             style: ElevatedButton.styleFrom(
@@ -48,5 +57,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-
-// keytool.exe -list -v -alias androiddebugkey -keystore C:\\Users\\danyu\\.android\\debug.keystore
