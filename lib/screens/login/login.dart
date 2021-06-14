@@ -34,12 +34,12 @@ class LoginScreen extends StatelessWidget {
           SizedBox(height: 10.0),
           ElevatedButton.icon(
             onPressed: () {
-              // final provider = Provider.of<GoogleSignInProvider>(
-              //   context,
-              //   listen: false,
-              // );
+              final provider = Provider.of<GoogleSignInProvider>(
+                context,
+                listen: false,
+              );
 
-              // provider.googleLogin();
+              provider.googleLogin();
             },
             label: Text('Sign In with Google'),
             icon: FaIcon(FontAwesomeIcons.google),

@@ -17,19 +17,22 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Weeks To Live',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider(
+      create: (context) => GoogleSignInProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Weeks To Live',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        initialRoute: AuthenticationWrapper.id,
+        routes: {
+          AuthenticationWrapper.id: (context) => AuthenticationWrapper(),
+          HomeScreen.id: (context) => HomeScreen(),
+          EmailLoginScreen.id: (context) => EmailLoginScreen(),
+          LoginScreen.id: (context) => LoginScreen(),
+        },
       ),
-      initialRoute: AuthenticationWrapper.id,
-      routes: {
-        AuthenticationWrapper.id: (context) => AuthenticationWrapper(),
-        HomeScreen.id: (context) => HomeScreen(),
-        EmailLoginScreen.id: (context) => EmailLoginScreen(),
-        LoginScreen.id: (context) => LoginScreen(),
-      },
     );
   }
 }
