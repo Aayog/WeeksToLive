@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:weekstolive/screens/login.dart';
+import 'package:provider/provider.dart';
+
+import 'package:weekstolive/screens/login/login.dart';
+import 'package:weekstolive/services/google_sign_in.dart';
 
 class HomeScreen extends StatefulWidget {
   static String id = 'home_screen';
@@ -11,6 +14,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _auth = FirebaseAuth.instance;
+  final _authType =
+      FirebaseAuth.instance.currentUser!.providerData[0].providerId;
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +25,24 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("HOME"),
+            Text("Home Page"),
+            SizedBox(height: 10),
+            Text('Email: ' + _auth.currentUser!.email!),
             ElevatedButton(
               onPressed: () {
-                _auth.signOut();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LoginScreen(),
-                  ),
-                );
+                if (_authType == "google.com") {
+                  final provider = Provider.of<GoogleSignInProvider>(
+                    context,
+                    listen: false,
+                  );
+
+                  provider.googleLogOut();
+                } else {
+                  _auth.signOut();
+                }
+
+                Navigator.pushNamedAndRemoveUntil(
+                    context, LoginScreen.id, (route) => false);
               },
               child: Text("Sign out"),
             ),

@@ -1,20 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'package:weekstolive/screens/home.dart';
 
-class LoginScreen extends StatefulWidget {
-  static String id = 'login_screen';
+class EmailLoginScreen extends StatefulWidget {
+  static String id = 'email_login';
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _EmailLoginScreenState createState() => _EmailLoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _EmailLoginScreenState extends State<EmailLoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  String _emailText = '';
-  String _passwordText = '';
 
   final _auth = FirebaseAuth.instance;
 
@@ -39,9 +37,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 labelText: 'Email',
               ),
               controller: _emailController,
-              onChanged: (value) {
-                _emailText = value.trim();
-              },
             ),
           ),
           Padding(
@@ -56,9 +51,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 labelText: 'Password',
               ),
               controller: _passwordController,
-              onChanged: (value) {
-                _passwordText = value.trim();
-              },
             ),
           ),
           Row(
@@ -69,7 +61,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () async {
                   try {
                     await _auth.signInWithEmailAndPassword(
-                        email: _emailText, password: _passwordText);
+                        email: _emailController.text.trim(),
+                        password: _passwordController.text.trim());
 
                     Navigator.pushNamed(context, HomeScreen.id);
                   } catch (e) {
@@ -83,7 +76,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () async {
                   try {
                     await _auth.createUserWithEmailAndPassword(
-                        email: _emailText, password: _passwordText);
+                        email: _emailController.text.trim(),
+                        password: _passwordController.text.trim());
 
                     Navigator.pushNamed(context, HomeScreen.id);
                   } catch (e) {
