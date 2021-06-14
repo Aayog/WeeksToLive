@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 import 'package:weekstolive/screens/home.dart';
 
-class LoginScreen extends StatefulWidget {
-  static String id = 'login_screen';
+class EmailLoginScreen extends StatefulWidget {
+  static String id = 'email_login';
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _EmailLoginScreenState createState() => _EmailLoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _EmailLoginScreenState extends State<EmailLoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
