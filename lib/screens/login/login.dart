@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
-import 'package:weekstolive/screens/home.dart';
+// import 'package:provider/provider.dart';
+// import 'package:weekstolive/screens/home.dart';
 
 import 'package:weekstolive/screens/login/email_login.dart';
-import 'package:weekstolive/services/google_sign_in.dart';
+// import 'package:weekstolive/services/google_sign_in.dart';
 
 class LoginScreen extends StatelessWidget {
   static String id = 'login_screen';
@@ -35,15 +35,15 @@ class LoginScreen extends StatelessWidget {
           SizedBox(height: 10.0),
           ElevatedButton.icon(
             onPressed: () {
-              final provider = Provider.of<GoogleSignInProvider>(
-                context,
-                listen: false,
-              );
+              // final provider = Provider.of<GoogleSignInProvider>(
+              //   context,
+              //   listen: false,
+              // );
 
-              provider.googleLogin();
+              // provider.googleLogin();
 
-              Navigator.pushNamedAndRemoveUntil(
-                  context, HomeScreen.id, (route) => false);
+              // Navigator.pushNamedAndRemoveUntil(
+              //     context, HomeScreen.id, (route) => false);
             },
             label: Text('Sign In with Google'),
             icon: FaIcon(FontAwesomeIcons.google),
