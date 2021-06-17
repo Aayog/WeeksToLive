@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-class AuthenticationService {
+class EmailSignInProvider {
   final FirebaseAuth _firebaseAuth;
 
   AuthenticationService(this._firebaseAuth);
