@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class EmailSignInProvider {
   final FirebaseAuth _firebaseAuth;
 
-  AuthenticationService(this._firebaseAuth);
+  EmailSignInProvider(this._firebaseAuth);
 
   Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
 
