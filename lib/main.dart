@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:weekstolive/screens/authentication.dart';
 import 'package:weekstolive/screens/home.dart';
-import 'package:weekstolive/screens/login/email_login.dart';
-import 'package:weekstolive/screens/login/login.dart';
+import 'package:weekstolive/screens/email_login.dart';
+import 'package:weekstolive/screens/login.dart';
 // import 'package:weekstolive/services/google_sign_in.dart';
 
 Future<void> main() async {
