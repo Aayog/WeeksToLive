@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 
 import 'package:weekstolive/screens/home.dart';
 
-class EmailLoginScreen extends StatefulWidget {
-  static String id = 'email_login';
+class EmailRegisterScreen extends StatefulWidget {
+  static String id = 'email_register';
 
   @override
-  _EmailLoginScreenState createState() => _EmailLoginScreenState();
+  _EmailRegisterScreenState createState() => _EmailRegisterScreenState();
 }
 
-class _EmailLoginScreenState extends State<EmailLoginScreen> {
+class _EmailRegisterScreenState extends State<EmailRegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmController = TextEditingController();
 
   final _auth = FirebaseAuth.instance;
 
@@ -20,7 +21,7 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: Text('Register'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -53,6 +54,20 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
               controller: _passwordController,
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 10.0,
+              horizontal: 20.0,
+            ),
+            child: TextField(
+              obscureText: true,
+              keyboardType: TextInputType.visiblePassword,
+              decoration: InputDecoration(
+                labelText: 'Confirm Password',
+              ),
+              controller: _confirmController,
+            ),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -60,16 +75,22 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
               ElevatedButton(
                 onPressed: () async {
                   try {
-                    await _auth.signInWithEmailAndPassword(
-                        email: _emailController.text.trim(),
-                        password: _passwordController.text.trim());
+                    if (_passwordController.text != '' &&
+                        _confirmController.text != '' &&
+                        _passwordController.text == _confirmController.text) {
+                      await _auth.createUserWithEmailAndPassword(
+                          email: _emailController.text.trim(),
+                          password: _passwordController.text.trim());
 
-                    Navigator.pushNamed(context, HomeScreen.id);
+                      Navigator.pushNamed(context, HomeScreen.id);
+                    } else {
+                      print('Passwords do not match');
+                    }
                   } catch (e) {
                     print(e);
                   }
                 },
-                child: Text('Sign In'),
+                child: Text('Sign Up'),
               ),
             ],
           ),

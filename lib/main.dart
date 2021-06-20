@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 
 import 'package:weekstolive/screens/authentication.dart';
+import 'package:weekstolive/screens/email_register.dart';
 import 'package:weekstolive/screens/home.dart';
 import 'package:weekstolive/screens/email_login.dart';
 import 'package:weekstolive/screens/login.dart';
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         AuthenticationWrapper.id: (context) => AuthenticationWrapper(),
         HomeScreen.id: (context) => HomeScreen(),
         EmailLoginScreen.id: (context) => EmailLoginScreen(),
+        EmailRegisterScreen.id: (context) => EmailRegisterScreen(),
         LoginScreen.id: (context) => LoginScreen(),
       },
     );
