@@ -7,6 +7,7 @@ import 'package:weekstolive/screens/email_register.dart';
 import 'package:weekstolive/screens/home.dart';
 import 'package:weekstolive/screens/email_login.dart';
 import 'package:weekstolive/screens/login.dart';
+import 'package:weekstolive/screens/user_details.dart';
 // import 'package:weekstolive/services/google_sign_in.dart';
 
 Future<void> main() async {
@@ -42,13 +43,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: AuthenticationWrapper.id,
+      initialRoute: UserDetailsScreen.id,
       routes: {
         AuthenticationWrapper.id: (context) => AuthenticationWrapper(),
         HomeScreen.id: (context) => HomeScreen(),
         EmailLoginScreen.id: (context) => EmailLoginScreen(),
         EmailRegisterScreen.id: (context) => EmailRegisterScreen(),
         LoginScreen.id: (context) => LoginScreen(),
+        UserDetailsScreen.id: (context) => UserDetailsScreen(),
       },
     );
   }
