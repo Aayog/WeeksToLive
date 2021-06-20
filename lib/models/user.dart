@@ -1,16 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class User {
-  final String id;
-  final String name;
-  final String email;
-  final String dob;
-  final String sex;
+class UserData {
+  String id;
+  String name;
+  String email;
+  String password;
+  String dob;
+  String sex;
 
-  User({
+  UserData({
     required this.id,
     required this.name,
     required this.email,
+    required this.password,
     required this.dob,
     required this.sex,
   });
