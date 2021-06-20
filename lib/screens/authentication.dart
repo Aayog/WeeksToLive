@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:weekstolive/screens/home.dart';
 
-import 'package:weekstolive/screens/login/login.dart';
+import 'package:weekstolive/screens/login.dart';
 
 class AuthenticationWrapper extends StatelessWidget {
   static String id = 'authentication_screen';

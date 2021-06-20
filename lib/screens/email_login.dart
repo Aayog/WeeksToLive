@@ -71,21 +71,6 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
                 },
                 child: Text('Sign In'),
               ),
-              SizedBox(width: 20.0),
-              ElevatedButton(
-                onPressed: () async {
-                  try {
-                    await _auth.createUserWithEmailAndPassword(
-                        email: _emailController.text.trim(),
-                        password: _passwordController.text.trim());
-
-                    Navigator.pushNamed(context, HomeScreen.id);
-                  } catch (e) {
-                    print(e);
-                  }
-                },
-                child: Text('Sign Up'),
-              ),
             ],
           ),
         ],

@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:weekstolive/models/user.dart';
 
 class EmailSignInProvider {
-  final FirebaseAuth _firebaseAuth;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  AuthenticationService(this._firebaseAuth);
+  late UserData user;
 
   Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
 
@@ -20,13 +23,18 @@ class EmailSignInProvider {
     }
   }
 
-  Future<String> signUp(
-      {required String email, required String password}) async {
+  Future<String> signUp({required UserData userData}) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
+      final UserCredential result =
+          await _firebaseAuth.createUserWithEmailAndPassword(
+        email: userData.email,
+        password: userData.password,
       );
+
+      userData.id = result.user!.uid;
+
+      await userData.saveInfo();
+
       return 'Signed Up';
     } on FirebaseAuthException catch (e) {
       return e.message.toString();

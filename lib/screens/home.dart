@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 
-import 'package:weekstolive/screens/login/login.dart';
+import 'package:weekstolive/screens/login.dart';
 // import 'package:weekstolive/services/google_sign_in.dart';
 
 class HomeScreen extends StatefulWidget {
