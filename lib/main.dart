@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: UserDetailsScreen.id,
+      initialRoute: AuthenticationWrapper.id,
       routes: {
         AuthenticationWrapper.id: (context) => AuthenticationWrapper(),
         HomeScreen.id: (context) => HomeScreen(),

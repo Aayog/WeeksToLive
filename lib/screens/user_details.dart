@@ -1,8 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:weekstolive/screens/home.dart';
 
 class UserDetailsScreen extends StatefulWidget {
   static String id = 'user_details';
+
+  final String? userId;
+
+  const UserDetailsScreen({Key? key, this.userId}) : super(key: key);
 
   @override
   _UserDetailsScreenState createState() => _UserDetailsScreenState();
@@ -143,11 +149,18 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
           ),
           ElevatedButton(
             onPressed: () {
-              print(_nameController.text);
-              print(genderValue);
-              print(selectedDate);
-              print(smokeValue);
-              print(drinkValue);
+              String? userId = widget.userId;
+
+              FirebaseFirestore.instance.doc('users/$userId').set({
+                'name': _nameController.text,
+                'gender': genderValue,
+                'dob': selectedDate,
+                'smoke': smokeValue,
+                'drink': drinkValue,
+              });
+
+              Navigator.pushNamedAndRemoveUntil(
+                  context, HomeScreen.id, (route) => false);
             },
             child: Text('Submit'),
           ),

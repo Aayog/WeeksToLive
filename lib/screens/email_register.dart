@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'package:weekstolive/screens/home.dart';
+import 'package:weekstolive/screens/user_details.dart';
 
 class EmailRegisterScreen extends StatefulWidget {
   static String id = 'email_register';
@@ -78,11 +78,21 @@ class _EmailRegisterScreenState extends State<EmailRegisterScreen> {
                     if (_passwordController.text != '' &&
                         _confirmController.text != '' &&
                         _passwordController.text == _confirmController.text) {
-                      await _auth.createUserWithEmailAndPassword(
-                          email: _emailController.text.trim(),
-                          password: _passwordController.text.trim());
+                      UserCredential result =
+                          await _auth.createUserWithEmailAndPassword(
+                              email: _emailController.text.trim(),
+                              password: _passwordController.text.trim());
 
-                      Navigator.pushNamed(context, HomeScreen.id);
+                      String userId = result.user!.uid;
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => UserDetailsScreen(
+                            userId: userId,
+                          ),
+                        ),
+                      );
                     } else {
                       print('Passwords do not match');
                     }
