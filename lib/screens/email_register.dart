@@ -85,14 +85,6 @@ class _EmailRegisterScreenState extends State<EmailRegisterScreen> {
 
                       String userId = result.user!.uid;
 
-                      print(userId);
-
-                      // FirebaseFirestore.instance.doc('users/$userId').set({
-                      //   'name': 'danyu rajbahak',
-                      //   'gender': 'male',
-                      //   'dob': '21/07/1999',
-                      // });
-
                       Navigator.push(
                         context,
                         MaterialPageRoute(
