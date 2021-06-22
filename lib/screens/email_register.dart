@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -78,9 +79,20 @@ class _EmailRegisterScreenState extends State<EmailRegisterScreen> {
                     if (_passwordController.text != '' &&
                         _confirmController.text != '' &&
                         _passwordController.text == _confirmController.text) {
-                      await _auth.createUserWithEmailAndPassword(
-                          email: _emailController.text.trim(),
-                          password: _passwordController.text.trim());
+                      UserCredential result =
+                          await _auth.createUserWithEmailAndPassword(
+                              email: _emailController.text.trim(),
+                              password: _passwordController.text.trim());
+
+                      String userId = result.user!.uid;
+
+                      print(userId);
+
+                      FirebaseFirestore.instance.doc('users/$userId').set({
+                        'name': 'danyu rajbahak',
+                        'gender': 'male',
+                        'dob': '21/07/1999',
+                      });
 
                       Navigator.pushNamed(context, HomeScreen.id);
                     } else {
