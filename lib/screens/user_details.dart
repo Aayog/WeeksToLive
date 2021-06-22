@@ -4,6 +4,10 @@ import 'package:intl/intl.dart';
 class UserDetailsScreen extends StatefulWidget {
   static String id = 'user_details';
 
+  final String? userId;
+
+  const UserDetailsScreen({Key? key, this.userId}) : super(key: key);
+
   @override
   _UserDetailsScreenState createState() => _UserDetailsScreenState();
 }
@@ -143,6 +147,8 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
           ),
           ElevatedButton(
             onPressed: () {
+              print('User Details');
+              print(widget.userId);
               print(_nameController.text);
               print(genderValue);
               print(selectedDate);

@@ -1,8 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'package:weekstolive/screens/home.dart';
+import 'package:weekstolive/screens/user_details.dart';
 
 class EmailRegisterScreen extends StatefulWidget {
   static String id = 'email_register';
@@ -88,13 +87,20 @@ class _EmailRegisterScreenState extends State<EmailRegisterScreen> {
 
                       print(userId);
 
-                      FirebaseFirestore.instance.doc('users/$userId').set({
-                        'name': 'danyu rajbahak',
-                        'gender': 'male',
-                        'dob': '21/07/1999',
-                      });
+                      // FirebaseFirestore.instance.doc('users/$userId').set({
+                      //   'name': 'danyu rajbahak',
+                      //   'gender': 'male',
+                      //   'dob': '21/07/1999',
+                      // });
 
-                      Navigator.pushNamed(context, HomeScreen.id);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => UserDetailsScreen(
+                            userId: userId,
+                          ),
+                        ),
+                      );
                     } else {
                       print('Passwords do not match');
                     }
