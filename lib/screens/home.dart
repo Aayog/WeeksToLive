@@ -72,27 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: () {
-                // if (_authType == "google.com") {
-                //   final provider = Provider.of<GoogleSignInProvider>(
-                //     context,
-                //     listen: false,
-                //   );
-
-                //   provider.googleLogOut();
-                // } else {
-                //   _auth.signOut();
-                // }
-
-                _auth.signOut();
-
-                Navigator.pushNamedAndRemoveUntil(
-                    context, LoginScreen.id, (route) => false);
-              },
-              icon: Icon(Icons.exit_to_app))
-        ],
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.exit_to_app))],
       ),
       body: Center(
         child: requestList(),

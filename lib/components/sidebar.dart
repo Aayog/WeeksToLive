@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:weekstolive/screens/login.dart';
 
 class SideBar extends StatelessWidget {
-  const SideBar({Key? key}) : super(key: key);
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +23,33 @@ class SideBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.account_box),
             title: Text('Profile'),
-            onTap: () => {},
+            onTap: () {},
           ),
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
-            onTap: () => {},
+            onTap: () {},
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
-            onTap: () => {},
+            onTap: () {
+              // if (_authType == "google.com") {
+              //   final provider = Provider.of<GoogleSignInProvider>(
+              //     context,
+              //     listen: false,
+              //   );
+
+              //   provider.googleLogOut();
+              // } else {
+              //   _auth.signOut();
+              // }
+
+              _auth.signOut();
+
+              Navigator.pushNamedAndRemoveUntil(
+                  context, LoginScreen.id, (route) => false);
+            },
           ),
         ],
       ),
