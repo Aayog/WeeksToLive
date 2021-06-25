@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import 'package:weekstolive/screens/edit_profile.dart';
+
 class ProfileScreen extends StatefulWidget {
   static String id = 'profile';
 
@@ -75,7 +77,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         actions: [
           IconButton(
             icon: Icon(Icons.edit),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, EditProfileScreen.id);
+            },
           ),
         ],
       ),
