@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:weekstolive/screens/login.dart';
+import 'package:weekstolive/screens/profile.dart';
 
 class SideBar extends StatelessWidget {
   final _auth = FirebaseAuth.instance;
@@ -23,7 +24,9 @@ class SideBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.account_box),
             title: Text('Profile'),
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, ProfileScreen.id);
+            },
           ),
           ListTile(
             leading: Icon(Icons.settings),
