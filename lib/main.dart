@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 
 import 'package:weekstolive/screens/authentication.dart';
+import 'package:weekstolive/screens/edit_profile.dart';
 import 'package:weekstolive/screens/email_register.dart';
 import 'package:weekstolive/screens/home.dart';
 import 'package:weekstolive/screens/email_login.dart';
 import 'package:weekstolive/screens/login.dart';
 import 'package:weekstolive/screens/profile.dart';
+import 'package:weekstolive/screens/settings.dart';
 import 'package:weekstolive/screens/user_details.dart';
 // import 'package:weekstolive/services/google_sign_in.dart';
 
@@ -53,6 +55,8 @@ class MyApp extends StatelessWidget {
         LoginScreen.id: (context) => LoginScreen(),
         UserDetailsScreen.id: (context) => UserDetailsScreen(),
         ProfileScreen.id: (context) => ProfileScreen(),
+        EditProfileScreen.id: (context) => EditProfileScreen(),
+        SettingsScreen.id: (context) => SettingsScreen(),
       },
     );
   }
