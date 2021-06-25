@@ -12,6 +12,14 @@ class EditProfileScreen extends StatefulWidget {
 class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Edit Profile'),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Text('Edit Profile'),
+      ),
+    );
   }
 }
