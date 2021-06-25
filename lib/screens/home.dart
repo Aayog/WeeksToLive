@@ -16,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Welcome to WeeksToLive'),
+          centerTitle: true,
         ),
         drawer: SideBar(),
         body: DoubleBackToCloseApp(

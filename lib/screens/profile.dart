@@ -71,6 +71,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.edit),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: Center(
         child: requestList(),
