@@ -14,11 +14,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Profile'),
+        title: Text('Settings'),
         centerTitle: true,
       ),
       body: Center(
-        child: Text('Edit Profile'),
+        child: Text('Settings'),
       ),
     );
   }
