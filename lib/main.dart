@@ -7,6 +7,7 @@ import 'package:weekstolive/screens/email_register.dart';
 import 'package:weekstolive/screens/home.dart';
 import 'package:weekstolive/screens/email_login.dart';
 import 'package:weekstolive/screens/login.dart';
+import 'package:weekstolive/screens/profile.dart';
 import 'package:weekstolive/screens/user_details.dart';
 // import 'package:weekstolive/services/google_sign_in.dart';
 
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
         EmailRegisterScreen.id: (context) => EmailRegisterScreen(),
         LoginScreen.id: (context) => LoginScreen(),
         UserDetailsScreen.id: (context) => UserDetailsScreen(),
+        ProfileScreen.id: (context) => ProfileScreen(),
       },
     );
   }

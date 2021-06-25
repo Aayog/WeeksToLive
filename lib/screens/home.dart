@@ -1,11 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:weekstolive/components/sidebar.dart';
 // import 'package:provider/provider.dart';
-
-import 'package:weekstolive/screens/login.dart';
-// import 'package:weekstolive/services/google_sign_in.dart';
 
 class HomeScreen extends StatefulWidget {
   static String id = 'home_screen';
@@ -16,8 +15,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _auth = FirebaseAuth.instance;
-  // final _authType =
-  //     FirebaseAuth.instance.currentUser!.providerData[0].providerId;
   CollectionReference users = FirebaseFirestore.instance.collection('users');
 
   @override
@@ -65,38 +62,25 @@ class _HomeScreenState extends State<HomeScreen> {
             }
           }
 
-          return Center(child: CircularProgressIndicator());
+          return Center(
+            child: CircularProgressIndicator(),
+          );
         },
       );
     }
 
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: () {
-                // if (_authType == "google.com") {
-                //   final provider = Provider.of<GoogleSignInProvider>(
-                //     context,
-                //     listen: false,
-                //   );
-
-                //   provider.googleLogOut();
-                // } else {
-                //   _auth.signOut();
-                // }
-
-                _auth.signOut();
-
-                Navigator.pushNamedAndRemoveUntil(
-                    context, LoginScreen.id, (route) => false);
-              },
-              icon: Icon(Icons.exit_to_app))
-        ],
-      ),
-      body: Center(
-        child: requestList(),
-      ),
-    );
+        appBar: AppBar(
+          title: Text('Welcome to WeeksToLive'),
+        ),
+        drawer: SideBar(),
+        body: DoubleBackToCloseApp(
+          snackBar: const SnackBar(
+            content: Text('Press back twice to exit app.'),
+          ),
+          child: Center(
+            child: requestList(),
+          ),
+        ));
   }
 }

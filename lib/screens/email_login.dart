@@ -64,7 +64,8 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
                         email: _emailController.text.trim(),
                         password: _passwordController.text.trim());
 
-                    Navigator.pushNamed(context, HomeScreen.id);
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, HomeScreen.id, (route) => false);
                   } catch (e) {
                     print(e);
                   }
