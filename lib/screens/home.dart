@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -61,19 +62,25 @@ class _HomeScreenState extends State<HomeScreen> {
             }
           }
 
-          return Center(child: CircularProgressIndicator());
+          return Center(
+            child: CircularProgressIndicator(),
+          );
         },
       );
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Welcome to WeeksToLive'),
-      ),
-      drawer: SideBar(),
-      body: Center(
-        child: requestList(),
-      ),
-    );
+        appBar: AppBar(
+          title: Text('Welcome to WeeksToLive'),
+        ),
+        drawer: SideBar(),
+        body: DoubleBackToCloseApp(
+          snackBar: const SnackBar(
+            content: Text('Press back twice to exit app.'),
+          ),
+          child: Center(
+            child: requestList(),
+          ),
+        ));
   }
 }
