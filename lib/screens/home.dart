@@ -2,10 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:weekstolive/components/sidebar.dart';
 // import 'package:provider/provider.dart';
-
-import 'package:weekstolive/screens/login.dart';
-// import 'package:weekstolive/services/google_sign_in.dart';
 
 class HomeScreen extends StatefulWidget {
   static String id = 'home_screen';
@@ -16,8 +14,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _auth = FirebaseAuth.instance;
-  // final _authType =
-  //     FirebaseAuth.instance.currentUser!.providerData[0].providerId;
   CollectionReference users = FirebaseFirestore.instance.collection('users');
 
   @override
@@ -72,8 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.exit_to_app))],
+        title: Text('Welcome to WeeksToLive'),
       ),
+      drawer: SideBar(),
       body: Center(
         child: requestList(),
       ),
