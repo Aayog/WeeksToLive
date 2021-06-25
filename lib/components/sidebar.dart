@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:weekstolive/screens/login.dart';
 import 'package:weekstolive/screens/profile.dart';
+import 'package:weekstolive/screens/settings.dart';
 
 class SideBar extends StatelessWidget {
   final _auth = FirebaseAuth.instance;
@@ -32,7 +33,9 @@ class SideBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, SettingsScreen.id);
+            },
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app),
